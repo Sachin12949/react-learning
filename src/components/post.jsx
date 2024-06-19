@@ -3,16 +3,28 @@ import React, { useEffect, useState } from "react";
 
 const PostsContainer = (props) => {
 
-    console.log("2", props);
+    const [post, setPost] = useState();
 
-    const postsData = props.postData;
-    console.log("3", postsData);
+
+    useEffect(()=>{
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response)=> response.json())
+        .then((data)=>{
+            setPost(data);
+        })
+        .catch((error)=>{
+            console.error("Error posting data", error);
+        });
+    },[]);
     
     return(
         <>
+        <div>
+            Post container
+        </div>
         <List>
-        {postsData && postsData.length > 0 ? (
-            postsData.map((posts,index)=>(
+        {post && post.length > 0 ? (
+            post.map((posts,index)=>(
                 <div>
                 <h1>{index+1}</h1>
                 <h2> {posts.title}</h2>

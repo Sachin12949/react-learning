@@ -63,9 +63,7 @@ const Home = () => {
             <p>{text}</p>
             <button onClick={handleClick}>Click me</button>
             <Counter initialCount={0}/>
-            {/* <FetchApi userData={allUserData}/> */}
             <PostsContainer postData={post}/>
-            {/* <SortableTable/> */}
         </div>
         </>
     )
